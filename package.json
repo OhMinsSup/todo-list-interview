@@ -2,9 +2,14 @@
   "name": "todolist",
   "private": true,
   "scripts": {
-    "compile": "tsc || exit 1",
-    "dev": "next dev -p 3000",
     "build": "yarn test && next build",
+    "build:worker": "opennextjs-cloudflare",
+    "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts",
+    "compile": "tsc || exit 1",
+    "deploy": "yarn build:worker && wrangler deploy",
+    "dev": "next dev -p 3000",
+    "dev:worker": "wrangler dev --port 8771",
+    "preview": "yarn build:worker && yarn wrangler dev",
     "start": "next start",
     "test": "jest"
   },
@@ -22,9 +27,12 @@
   },
   "devDependencies": {
     "@babel/core": "^7.22.9",
+    "@cloudflare/workers-types": "^4.20250204.0",
     "@eslint/compat": "^1.2.6",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@next/eslint-plugin-next": "^15.1.6",
+    "@opennextjs/aws": "^3.4.2",
+    "@opennextjs/cloudflare": "^0.5.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
@@ -46,6 +54,7 @@
     "prettier-plugin-tailwindcss": "^0.6.6",
     "ts-node": "^10.9.1",
     "typescript": "^5.1.6",
-    "typescript-eslint": "^8.23.0"
+    "typescript-eslint": "^8.23.0",
+    "wrangler": "^3.108.1"
   }
 }

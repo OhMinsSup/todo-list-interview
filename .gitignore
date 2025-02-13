@@ -18,3 +18,23 @@ next-env.d.ts
 
 # macOS DSStore
 .DS_Store
+
+# OpenNext.js
+.open-next
+
+# env file
+# local env files
+.env*.local
+
+# OpenNext
+/.open-next
+dist
+
+# wrangler files
+.wrangler
+.env
+.env.*
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+!.env*example
