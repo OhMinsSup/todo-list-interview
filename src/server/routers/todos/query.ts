@@ -7,7 +7,7 @@ const baseQuery = z.object({
 
 const listQuery = baseQuery
   .extend({
-    completed: z.coerce.boolean(),
+    completed: z.enum(["true", "false"]).optional(),
   })
   .partial();
 
