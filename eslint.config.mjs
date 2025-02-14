@@ -1,6 +1,11 @@
+import * as path from "node:path";
+import { includeIgnoreFile } from "@eslint/compat";
+import eslint from "@eslint/js";
 import nextPlugin from "@next/eslint-plugin-next";
+import importPlugin from "eslint-plugin-import";
 import reactPlugin from "eslint-plugin-react";
 import hooksPlugin from "eslint-plugin-react-hooks";
+import tseslint from "typescript-eslint";
 
 /** @type {Awaited<import('typescript-eslint').Config>} */
 const reactConfig = [
@@ -90,4 +95,12 @@ export default [
   ...baseConfig,
   ...reactConfig,
   ...nextjsConfig,
+  {
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        additionalHooks: "useRecoilCallback",
+      },
+    ],
+  },
 ];
