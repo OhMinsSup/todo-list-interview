@@ -7,13 +7,10 @@ export const globalCss: CSSObject = {
     textRendering: "optimizeLegibility",
     MozOsxFontSmoothing: "grayscale",
     WebkitFontSmoothing: "antialiased",
-    fontFamily: `--font-pretendard`,
+    fontFamily: "--font-pretendard",
     color: palette.grayDark,
-    lineHeight: 1.44,
-  },
-  "html, body": {
-    height: "100%",
-    width: "100%",
+    overflowX: "hidden",
+    lineHeight: 1,
   },
   "*, :after, :before": {
     boxSizing: "border-box",
@@ -28,6 +25,8 @@ export const globalCss: CSSObject = {
     backgroundColor: "transparent",
   },
   body: {
+    minHeight: "100vh",
+    width: "100%",
     backgroundColor: palette.backgroundGray,
   },
 };

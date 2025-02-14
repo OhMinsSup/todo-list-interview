@@ -14,6 +14,8 @@ export const palette = {
   primaryText: "#1677ff",
   primaryTextActive: "#0958d9",
 
+  error: "#ff4d4f",
+
   default: "#000000e0",
   defaultBorder: "#d9d9d9",
   defaultHoverBorder: "#4096ff",
