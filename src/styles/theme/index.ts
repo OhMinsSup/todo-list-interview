@@ -2,6 +2,7 @@ import type { Theme } from "@emotion/react";
 
 import type { Border } from "~/styles/styled-system/border";
 import type { BorderWidth } from "~/styles/styled-system/borderWidths";
+import type { MediaQueries } from "~/styles/styled-system/breakpoints";
 import type { Button } from "~/styles/styled-system/button";
 import type { FontSize } from "~/styles/styled-system/fontSizes";
 import type { FontWeight } from "~/styles/styled-system/fontWeights";
@@ -16,6 +17,7 @@ import type { Spacing } from "~/styles/styled-system/spacing";
 import type { ZIndex } from "~/styles/styled-system/zIndex";
 import { border } from "~/styles/styled-system/border";
 import { borderWidths } from "~/styles/styled-system/borderWidths";
+import { mediaQueries } from "~/styles/styled-system/breakpoints";
 import { button } from "~/styles/styled-system/button";
 import { fontSizes } from "~/styles/styled-system/fontSizes";
 import { fontWeights } from "~/styles/styled-system/fontWeights";
@@ -42,6 +44,7 @@ export const theme: Partial<Theme> = {
   opacity,
   borderWidths,
   zIndex,
+  mq: mediaQueries,
   // ui component styles
   button,
   input,
@@ -51,47 +54,20 @@ export const theme: Partial<Theme> = {
 // 값이 잘못된 타입으로 인식되어서 에러가 발생한다.
 declare module "@emotion/react" {
   export interface Theme {
-    palette: {
-      [key in Palette]: string;
-    };
-    lineHeights: {
-      [key in LineHeight]: string;
-    };
-    border: {
-      [key in Border]: string;
-    };
-    rounded: {
-      [key in Rounded]: string;
-    };
-    shadows: {
-      [key in Shadows]: string;
-    };
-    sizes: {
-      [key in Size]: string;
-    };
-    spacing: {
-      [key in Spacing]: string;
-    };
-    fontSizes: {
-      [key in FontSize]: string;
-    };
-    fontWeights: {
-      [key in FontWeight]: string;
-    };
-    opacity: {
-      [key in Opacity]: string;
-    };
-    borderWidths: {
-      [key in BorderWidth]: string;
-    };
-    zIndex: {
-      [key in ZIndex]: string;
-    };
-    button: {
-      [key in Button]: string;
-    };
-    input: {
-      [key in Input]: string;
-    };
+    palette: Record<Palette, string>;
+    lineHeights: Record<LineHeight, string>;
+    border: Record<Border, string>;
+    rounded: Record<Rounded, string>;
+    shadows: Record<Shadows, string>;
+    sizes: Record<Size, string>;
+    spacing: Record<Spacing, string>;
+    fontSizes: Record<FontSize, string>;
+    fontWeights: Record<FontWeight, string>;
+    opacity: Record<Opacity, string>;
+    borderWidths: Record<BorderWidth, string>;
+    zIndex: Record<ZIndex, string>;
+    mq: Record<MediaQueries, string>;
+    button: Record<Button, string>;
+    input: Record<Input, string>;
   }
 }

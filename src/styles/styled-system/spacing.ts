@@ -1,9 +1,9 @@
-import { generatePXs, PxObject } from "./helpers";
+import type { PxObject } from "./helpers";
+import { generatePXs } from "./helpers";
 
 const pxs = generatePXs(100) as PxObject<101>;
 
 export const spacing = {
-  "1/2": "50%",
   ...pxs,
 };
 

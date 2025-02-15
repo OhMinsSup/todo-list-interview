@@ -42,6 +42,12 @@ export const getInputBaseStyle = (theme: Theme): CSSObject => {
       backgroundColor: theme.palette.bgContainerDisabled,
       borderColor: theme.palette.borderDisabled,
     },
+    //
+    "&[aria-errormessage]": {
+      borderWidth: "1px",
+      borderStyle: "solid",
+      borderColor: theme.palette.error,
+    },
   };
 };
 

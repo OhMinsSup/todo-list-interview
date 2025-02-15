@@ -21,7 +21,8 @@ const paredTodoQuery = (params?: Partial<TodoQuery>) => {
   const nextQuery: Record<string, string | undefined> = {
     pageNo: pageNo.toString(),
     limit: "10",
-    completed: completed ? completed.toString() : undefined,
+    completed:
+      typeof completed === "boolean" ? completed.toString() : undefined,
   };
 
   return nextQuery;
