@@ -27,6 +27,6 @@ export const action = createSafeActionClient({
     return DEFAULT_SERVER_ERROR_MESSAGE;
   },
 }).use(async ({ next }) => {
-  const db = await getCloudFlareDB();
+  const db = getCloudFlareDB();
   return next({ ctx: { db } });
 });

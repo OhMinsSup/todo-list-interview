@@ -12,14 +12,20 @@ export const ButtonVariants = [
 
 export type ButtonVariantsType = (typeof ButtonVariants)[number];
 
-const ButtonEdges = ["default", "circle", "round"] as const;
+export const ButtonEdges = ["default", "circle", "round"] as const;
 export type ButtonEdgesType = (typeof ButtonEdges)[number];
 
 export const ButtonColors = ["default", "primary"] as const;
 
 export type ButtonColorsType = (typeof ButtonColors)[number];
 
-const ButtonTypes = ["default", "primary", "text", "ghost", "filled"] as const;
+export const ButtonTypes = [
+  "default",
+  "primary",
+  "text",
+  "ghost",
+  "filled",
+] as const;
 export type ButtonType = (typeof ButtonTypes)[number];
 
 export const getButtonBaseStyle = (theme: Theme): CSSObject => {

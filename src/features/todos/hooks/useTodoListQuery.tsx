@@ -12,5 +12,6 @@ export const useTodoListQuery = () => {
       todo: state.todo,
     })),
   );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => getTodoList(), [getTodoList, todo]);
 };

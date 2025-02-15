@@ -1,4 +1,5 @@
-import { generatePXs, PxObject } from "./helpers";
+import type { PxObject } from "./helpers";
+import { generatePXs } from "./helpers";
 
 const pxs = generatePXs(32) as PxObject<33>;
 

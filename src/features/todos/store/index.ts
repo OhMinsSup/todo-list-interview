@@ -1,5 +1,6 @@
 import { createStore } from "zustand/vanilla";
 
+import type { Todo } from "~/db/schema";
 import type { GetTodoListApiResponse } from "~/features/todos/api/getTodoList";
 import type {
   TodoSlice,
@@ -38,16 +39,19 @@ export const transformTodoDataToRecord = (response: GetTodoListApiResponse) => {
 
   const record: TodoState["todo"] = {};
   record[pageInfo.currentPage.toString()] = {
-    list: list.map(transformTodoRecord),
+    list: list.map((todo) => transformTodoRecord(todo)),
     totalCount,
     pageInfo,
   };
   return record;
 };
 
-export const transformTodoRecord = <T extends Record<string, any>>(
-  record: T,
-) => {
+type TodoRecord = Omit<Todo, "createdAt" | "updatedAt"> & {
+  createdAt: string;
+  updatedAt: string;
+};
+
+export const transformTodoRecord = (record: TodoRecord): Todo => {
   return {
     ...record,
     createdAt: new Date(record.createdAt),

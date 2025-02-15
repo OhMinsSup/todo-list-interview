@@ -4,7 +4,7 @@ import type { Env } from "~/server";
 import { getCloudFlareDB } from "~/db/drizzle";
 
 export const databaseMiddleware = createMiddleware<Env>(async (c, next) => {
-  const db = await getCloudFlareDB();
+  const db = getCloudFlareDB();
   c.set("db", db);
   await next();
 });

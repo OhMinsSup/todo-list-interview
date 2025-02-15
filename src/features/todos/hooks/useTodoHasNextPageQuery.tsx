@@ -12,5 +12,6 @@ export const useTodoHasNextPageQuery = () => {
       todo: state.todo,
     })),
   );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => hasNextPage(), [hasNextPage, todo]);
 };

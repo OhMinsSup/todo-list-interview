@@ -12,5 +12,6 @@ export const useTodoTotalCountQuery = () => {
       todo: state.todo,
     })),
   );
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   return useMemo(() => getTotalCount(), [getTotalCount, todo]);
 };

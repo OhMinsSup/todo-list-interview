@@ -57,6 +57,6 @@ export const api = app
     return httpError.getResponse();
   });
 
-const routes = api.route("/todos", todoRouter);
+export const routes = api.route("/todos", todoRouter);
 
 export type AppType = typeof routes;

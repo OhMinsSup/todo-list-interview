@@ -7,13 +7,13 @@ import { useServerInsertedHTML } from "next/navigation";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 
-export type NextAppDirEmotionCacheProviderProps = {
+export interface NextAppDirEmotionCacheProviderProps {
   /** This is the options passed to createCache() from 'import createCache from "@emotion/cache"' */
   options: Omit<OptionsOfCreateCache, "insertionPoint"> & {
     prepend?: boolean;
   };
   children: ReactNode;
-};
+}
 
 const NextAppDirEmotionCacheProvider = (
   props: NextAppDirEmotionCacheProviderProps,
