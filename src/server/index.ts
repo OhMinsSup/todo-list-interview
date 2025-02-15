@@ -1,18 +1,18 @@
+import type { ContentfulStatusCode } from "hono/utils/http-status";
 import { Hono } from "hono";
 import { HTTPException } from "hono/http-exception";
-import { ContentfulStatusCode } from "hono/utils/http-status";
 import { ZodError } from "zod";
 
 import type { DrizzleDatabase } from "~/db/drizzle";
-import { corsMiddleware } from "~/server/middlewares/corsMiddleware";
-import { databaseMiddleware } from "~/server/middlewares/databaseMiddleware";
+import { corsMiddleware } from "~/server/middlewares/cors";
+import { databaseMiddleware } from "~/server/middlewares/database";
 import { todoRouter } from "~/server/routers/todos";
 
-export type Env = {
+export interface Env {
   Variables: {
     db: DrizzleDatabase;
   };
-};
+}
 
 const app = new Hono().basePath("/api");
 
