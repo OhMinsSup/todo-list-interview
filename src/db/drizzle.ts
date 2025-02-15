@@ -8,7 +8,7 @@ import * as schema from "./schema";
 export type DrizzleDatabase = DrizzleD1Database<typeof schema>;
 
 export const getCloudFlareDB = () =>
-  remember("cloudflare_db", async () => {
+  remember("cloudflare_db", () => {
     const { env } = getCloudflareContext();
     return drizzle(env.DATABASE_URL, {
       schema,
