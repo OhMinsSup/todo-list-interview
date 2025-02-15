@@ -33,10 +33,27 @@ interface GetTodoListParams {
 }
 
 export const getTodoListApi = async ({ query }: GetTodoListParams = {}) => {
-  const response = await client.api.todos.$get({
-    query: paredTodoQuery(query),
-  });
-  return await response.json();
+  try {
+    const response = await client.api.todos.$get({
+      query: paredTodoQuery(query),
+    });
+    return await response.json();
+  } catch (error) {
+    console.error(error);
+    return {
+      success: false,
+      data: {
+        totalCount: 0,
+        list: [],
+        pageInfo: {
+          currentPage: 1,
+          hasNextPage: false,
+          nextPage: null,
+        },
+      },
+      error: undefined,
+    };
+  }
 };
 
 export type GetTodoListApiResponse = Awaited<ReturnType<typeof getTodoListApi>>;
