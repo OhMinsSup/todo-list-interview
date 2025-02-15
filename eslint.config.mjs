@@ -95,12 +95,4 @@ export default [
   ...baseConfig,
   ...reactConfig,
   ...nextjsConfig,
-  {
-    "react-hooks/exhaustive-deps": [
-      "warn",
-      {
-        additionalHooks: "useRecoilCallback",
-      },
-    ],
-  },
 ];
