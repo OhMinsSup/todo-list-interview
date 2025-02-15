@@ -9,8 +9,9 @@
     "db:migrate:dev": "wrangler d1 migrations apply todolist-database --local",
     "deploy": "yarn build:worker && wrangler deploy",
     "dev": "next dev",
+    "format": "prettier --check ./src --ignore-path .gitignore --write",
+    "lint": "eslint",
     "preview": "yarn build:worker && yarn wrangler dev",
-    "start": "next start",
     "test": "jest"
   },
   "dependencies": {
@@ -60,6 +61,7 @@
     "babel-jest": "^29.4.1",
     "drizzle-kit": "^0.30.4",
     "eslint": "^9.20.0",
+    "eslint-config-next": "15.1.7",
     "eslint-config-prettier": "^10.0.1",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-react": "^7.37.4",

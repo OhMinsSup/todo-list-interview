@@ -7,7 +7,6 @@ const config = {
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-packagejson",
   ],
-  tailwindFunctions: ["cn", "cva"],
   importOrder: [
     "<TYPES>",
     "^(react/(.*)$)|^(react$)|^(react-native(.*)$)",
