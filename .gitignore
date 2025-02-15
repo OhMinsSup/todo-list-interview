@@ -4,6 +4,7 @@
 
 .idea
 .next
+.swc
 node_modules
 
 # dist folder
