@@ -2,13 +2,13 @@ import { zValidator } from "@hono/zod-validator";
 import { desc, eq } from "drizzle-orm";
 import { Hono } from "hono";
 
+import type { Env } from "~/server";
 import { todoTable } from "~/db/schema";
-import { Env } from "~/server";
 import { query } from "~/server/routers/todos/query";
 
-export type HttpErrorData = {
+export interface HttpErrorData {
   text: string;
-};
+}
 
 const app = new Hono<Env>().get(
   "/",
