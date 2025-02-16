@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useCallback, useTransition } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
 import type { TodoTabValue } from "~/features/search/store/useTodoSearchStore";
 import { TodoBox } from "~/components/todo/TodoBox";
+import { TodoError } from "~/components/todo/TodoError";
 import { TodoForm } from "~/components/todo/TodoForm";
 import { TodoList } from "~/components/todo/TodoList";
 import { TodoListSkeleton } from "~/components/todo/TodoListSkeleton";
@@ -52,9 +54,11 @@ const TodoUserListPage = () => {
           <TodoListSkeleton />
         </When>
         <When condition={!isPending}>
-          {query.filter === "All" && <TodoList filter="All" />}
-          {query.filter === "TODO" && <TodoList filter="TODO" />}
-          {query.filter === "DONE" && <TodoList filter="DONE" />}
+          <ErrorBoundary fallback={<TodoError />}>
+            {query.filter === "All" && <TodoList filter="All" />}
+            {query.filter === "TODO" && <TodoList filter="TODO" />}
+            {query.filter === "DONE" && <TodoList filter="DONE" />}
+          </ErrorBoundary>
         </When>
       </TodoBox>
     </TodoTemplate>

@@ -19,8 +19,8 @@ const TodoDeleteButton = ({ todoId }: Props) => {
       try {
         await refetchTodoId(ctx.input.id);
         toast.success("할 일이 성공적으로 삭제되었습니다.");
-      } catch (error) {
-        console.error(error);
+      } catch (e) {
+        console.error(e);
         toast.error("할 일 목록을 다시 불러오는 중 오류가 발생했습니다.");
       }
     },
