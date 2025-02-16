@@ -7,6 +7,8 @@ import LayoutEmotion from "~/app/layout.emotion";
 import ErrorBoundary from "./ErrorBoundary";
 
 describe("ErrorBoundary", () => {
+  const onClick = jest.fn();
+
   const setup = (props?: ErrorBoundaryProps) => {
     return render(
       <LayoutEmotion>
@@ -14,6 +16,10 @@ describe("ErrorBoundary", () => {
       </LayoutEmotion>,
     );
   };
+
+  afterEach(() => {
+    onClick.mockClear();
+  });
 
   it("ErrorBoundary 컴포넌트 렌더링", () => {
     const { getByTestId } = setup();
@@ -59,12 +65,12 @@ describe("ErrorBoundary", () => {
   });
 
   it("ErrorBoundary 컴포넌트 렌더링 (onClick prop)", () => {
-    const onClick = jest.fn();
     const { container } = setup({ onClick });
     const button = container.querySelector("button");
     expect(button).toBeTruthy();
     if (!button) return;
     fireEvent.click(button);
-    expect(onClick.mock.calls.length).toBe(1);
+    expect(onClick).toHaveBeenCalledTimes(1);
+    expect(onClick).toHaveBeenCalled();
   });
 });

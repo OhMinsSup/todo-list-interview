@@ -29,6 +29,7 @@ const TodoTab = ({
 
   return (
     <Button
+      data-testid="todo-tab"
       color={isActive ? "primary" : "default"}
       variant={isActive ? "filled" : "text"}
       css={{

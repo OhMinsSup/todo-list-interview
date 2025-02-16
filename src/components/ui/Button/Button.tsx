@@ -90,6 +90,7 @@ const Button = React.forwardRef<ButtonRef, ButtonProps>((props, ref) => {
 
   return (
     <button
+      data-testid="button"
       ref={buttonRef}
       css={[
         getButtonBaseStyle(theme),

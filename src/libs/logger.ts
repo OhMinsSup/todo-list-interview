@@ -14,18 +14,6 @@ class Logger {
   }
 
   error(label: LogCategory, message: string, error: Error, extra?: Extra) {
-    if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
-      // Sentry.captureException(error, (scope) => {
-      //   scope.clear();
-      //   scope.setLevel("error");
-      //   scope.setTag("category", label);
-      //   for (const key in extra) {
-      //     scope.setExtra(key, extra[key]);
-      //   }
-      //   return scope;
-      // });
-    }
-
     if (process.env.NODE_ENV === "production") {
       this.output.error(message, {
         error: error.message,
@@ -35,7 +23,10 @@ class Logger {
       console.error(message);
       console.error(error);
       if (extra) {
-        console.error(extra);
+        console.error({
+          ...extra,
+          label,
+        });
       }
     }
   }

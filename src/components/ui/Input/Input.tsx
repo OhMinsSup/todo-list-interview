@@ -229,6 +229,7 @@ const Input = React.forwardRef<InputRef, InputProps>(
 
     const inputNode = (
       <input
+        data-testid="input"
         ref={inputRef}
         autoComplete={autoComplete}
         css={[

@@ -8,7 +8,9 @@ import LayoutEmotion from "~/app/layout.emotion";
 import Button from "./Button";
 
 describe("Button", () => {
-  const setup = (props: ButtonProps) => {
+  const onClick = jest.fn();
+
+  const setup = (props?: ButtonProps) => {
     return render(
       <LayoutEmotion>
         <Button aria-label="버튼" aria-labelledby="button-title" {...props} />
@@ -16,20 +18,22 @@ describe("Button", () => {
     );
   };
 
+  afterEach(() => {
+    onClick.mockClear();
+  });
+
   it("Button 컴포넌트 렌더링", () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
+      children: "Click Me",
     });
     const button = getByTestId("button");
 
     expect(button).toBeInTheDocument();
-    expect(button.classList.contains("button--primary")).toBe(true);
-    expect(button.classList.contains("button--solid")).toBe(true);
+    expect(button).toHaveTextContent("Click Me");
   });
 
   it("Button 컴포넌트 렌더링 (disabled prop)", () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       isDisabled: true,
     });
     const button = getByTestId("button");
@@ -39,62 +43,57 @@ describe("Button", () => {
 
   it("Button 컴포넌트 렌더링 (onClick prop)", () => {
     const onClick = jest.fn();
-    const { getByTestId } = setup({
+    const { getByTestId, getByText } = setup({
       "data-testid": "button",
       onPress: onClick,
+      children: "Click Me",
     });
     const button = getByTestId("button");
     fireEvent.click(button);
-
+    expect(onClick).toHaveBeenCalledTimes(1);
     expect(onClick).toHaveBeenCalled();
+    const text = getByText("Click Me");
+    expect(text).not.toBeNull();
   });
 
   it('Button 컴포넌트 렌더링 (variant="filled")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       color: "primary",
       variant: "filled",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--filled")).toBe(true);
-    expect(button.classList.contains("button--primary")).toBe(true);
+    expect(button).toHaveClass("button--filled button--primary");
   });
 
   it('Button 컴포넌트 렌더링 (variant="ghost")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       color: "primary",
       variant: "ghost",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--ghost")).toBe(true);
-    expect(button.classList.contains("button--primary")).toBe(true);
+    expect(button).toHaveClass("button--ghost button--primary");
   });
 
   it('Button 컴포넌트 렌더링 (variant="text")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       variant: "text",
       color: "primary",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--text")).toBe(true);
-    expect(button.classList.contains("button--primary")).toBe(true);
+    expect(button).toHaveClass("button--text button--primary");
   });
 
   it('Button 컴포넌트 렌더링 (variant="solid")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       variant: "solid",
       color: "primary",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--solid")).toBe(true);
-    expect(button.classList.contains("button--primary")).toBe(true);
+    expect(button).toHaveClass("button--solid button--primary");
   });
 
   it('Button 컴포넌트 렌더링 (variant="outlined")', () => {
@@ -105,38 +104,36 @@ describe("Button", () => {
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--outlined")).toBe(true);
-    expect(button.classList.contains("button--primary")).toBe(true);
+    expect(button).toHaveClass("button--outlined button--primary");
   });
 
   it('Button 컴포넌트 렌더링 (color="primary")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       color: "primary",
+      variant: "solid",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--primary")).toBe(true);
+    expect(button).toHaveClass("button--primary button--solid");
   });
 
   it('Button 컴포넌트 렌더링 (color="default")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       color: "default",
+      variant: "solid",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--default")).toBe(true);
+    expect(button).toHaveClass("button--default button--solid");
   });
 
   it('Button 컴포넌트 렌더링 (edge="default")', () => {
     const { getByTestId } = setup({
-      "data-testid": "button",
       edge: "default",
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--default")).toBe(true);
+    expect(button).toHaveClass("button--default");
   });
 
   it('Button 컴포넌트 렌더링 (edge="circle")', () => {
@@ -146,7 +143,7 @@ describe("Button", () => {
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--circle")).toBe(true);
+    expect(button).toHaveClass("button--circle");
   });
 
   it('Button 컴포넌트 렌더링 (size="round")', () => {
@@ -156,7 +153,7 @@ describe("Button", () => {
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--round")).toBe(true);
+    expect(button).toHaveClass("button--round");
   });
 
   it('Button 컴포넌트 렌더링 (size="small")', () => {
@@ -166,7 +163,7 @@ describe("Button", () => {
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--small")).toBe(true);
+    expect(button).toHaveClass("button--small");
   });
 
   it('Button 컴포넌트 렌더링 (size="medium")', () => {
@@ -176,7 +173,7 @@ describe("Button", () => {
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--middle")).toBe(true);
+    expect(button).toHaveClass("button--middle");
   });
 
   it('Button 컴포넌트 렌더링 (size="large")', () => {
@@ -186,7 +183,7 @@ describe("Button", () => {
     });
     const button = getByTestId("button");
 
-    expect(button.classList.contains("button--large")).toBe(true);
+    expect(button).toHaveClass("button--large");
   });
 
   it("Button 컴포넌트 렌더링 (ref)", () => {

@@ -68,7 +68,11 @@ const Checkbox = React.forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
       css={[getCheckboxLabelStyle(theme, isFocusVisible), css]}
     >
       <VisuallyHidden>
-        <input {...mergeProps(inputProps, focusProps)} ref={inputRef} />
+        <input
+          data-testid="checkbox"
+          {...mergeProps(inputProps, focusProps)}
+          ref={inputRef}
+        />
       </VisuallyHidden>
       <div css={getCheckboxBaseStyle(theme, isSelected)}>
         <Icons.Check fill={isSelected ? theme.palette.white : "none"} />

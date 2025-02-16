@@ -6,12 +6,12 @@ import { Padding } from "~/components/ui/Padding";
 import { Typography } from "~/components/ui/Typography";
 import { When } from "~/components/ui/When";
 
-interface Props {
+export interface TodoTotalCountProps {
   isPending: boolean;
   count: number;
 }
 
-const TodoTotalCount = ({ isPending, count = 0 }: Props) => {
+const TodoTotalCount = ({ isPending, count = 0 }: TodoTotalCountProps) => {
   return (
     <Padding all="16px">
       <Typography type="count" data-testid="todo-total-count">
