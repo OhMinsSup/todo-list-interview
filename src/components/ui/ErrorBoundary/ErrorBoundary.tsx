@@ -7,7 +7,7 @@ import { Button } from "~/components/ui/Button";
 import { Flex } from "~/components/ui/Flex";
 import { Typography } from "~/components/ui/Typography";
 
-interface ErrorBoundaryProps {
+export interface ErrorBoundaryProps {
   statusCode?: number;
   title?: React.ReactNode;
   description?: React.ReactNode;
@@ -58,9 +58,16 @@ const ErrorBoundary = ({
             gap: "2rem",
           }}
         >
-          <Typography type="title">{statusCode}</Typography>
-          <Typography type="global-error-text">{title}</Typography>
-          <Typography type="global-error-description-text">
+          <Typography type="title" data-testid="status-code">
+            {statusCode}
+          </Typography>
+          <Typography type="global-error-text" data-testid="title">
+            {title}
+          </Typography>
+          <Typography
+            type="global-error-description-text"
+            data-testid="description"
+          >
             {description}
           </Typography>
           <div css={{ marginTop: spacing["12px"] }}>
@@ -69,6 +76,7 @@ const ErrorBoundary = ({
               color="default"
               variant="solid"
               onPress={onClick}
+              data-testid="button"
             >
               {buttonText}
             </Button>

@@ -81,7 +81,7 @@ export const getGlobalErrorDescriptionTextStyle = (theme: Theme): Style => {
     element: "p",
     css: {
       textAlign: "center",
-      fontSize: theme.palette.textTertiary,
+      color: theme.palette.textTertiary,
     },
   };
 };

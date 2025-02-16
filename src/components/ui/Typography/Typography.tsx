@@ -13,7 +13,7 @@ import {
   getTodoEmptyStyle,
 } from "./styles";
 
-interface TypographyProps {
+export interface TypographyProps {
   type?: ComponentType;
   className?: string;
   css?: Interpolation<Theme>;

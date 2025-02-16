@@ -22,7 +22,8 @@ type PaddingKeys =
 
 type PaddingObject = Record<PaddingKeys, PaddingValue>;
 
-interface PaddingProps<E extends ElementType> extends Partial<PaddingObject> {
+export interface PaddingProps<E extends ElementType>
+  extends Partial<PaddingObject> {
   as?: E;
   className?: string;
   id?: string;

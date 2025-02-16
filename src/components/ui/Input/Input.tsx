@@ -41,7 +41,6 @@ export interface InputRef {
   ) => void;
   select: () => void;
   input: HTMLInputElement | null;
-  nativeElement: HTMLInputElement | null;
 }
 
 interface InputFocusOptions extends FocusOptions {
@@ -129,7 +128,6 @@ const Input = React.forwardRef<InputRef, InputProps>(
         inputRef.current?.select();
       },
       input: inputRef.current,
-      nativeElement: inputRef.current,
     }));
 
     const mergedClassName = classNames(props.className, "input", {
@@ -266,6 +264,7 @@ const Input = React.forwardRef<InputRef, InputProps>(
                 ? true
                 : false,
             )}
+            data-testid="input-clear"
             onClick={onReset}
           >
             <Icons.Close fill="currentColor" />

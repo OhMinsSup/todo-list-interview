@@ -12,9 +12,9 @@ export const getConditionResult = (
   return conditionResult;
 };
 
-interface WhenProps {
+export interface WhenProps {
   condition: (() => BooleanLike) | BooleanLike;
-  children: React.ReactNode | ((...args: unknown[]) => JSX.Element);
+  children: React.ReactNode | ((...args: unknown[]) => React.ReactNode);
 }
 
 const When = ({ condition, children }: WhenProps) => {

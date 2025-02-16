@@ -32,7 +32,7 @@ type Position = "absolute" | "fixed" | "relative" | "static" | "sticky";
 
 type FlexDirection = "column" | "column-reverse" | "row" | "row-reverse";
 
-interface FlexProps<E extends ElementType> {
+export interface FlexProps<E extends ElementType> {
   as?: E;
   css?: Interpolation<Theme>;
   position?: Position;

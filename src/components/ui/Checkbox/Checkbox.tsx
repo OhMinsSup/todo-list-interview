@@ -64,6 +64,7 @@ const Checkbox = React.forwardRef<CheckboxRef, CheckboxProps>((props, ref) => {
     <label
       ref={labelRef}
       className={mergedClassName}
+      data-testid="checkbox-label"
       css={[getCheckboxLabelStyle(theme, isFocusVisible), css]}
     >
       <VisuallyHidden>
