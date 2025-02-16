@@ -24,15 +24,22 @@ const TodoForm = () => {
   const { spacing } = useTheme();
 
   const { execute, isPending } = useAction(createTodoAction, {
-    onSuccess: async () => {
+    onSuccess: async (ctx) => {
       try {
-        const filter = useTodoSearchStore.getState().getFilter();
+        if (ctx.data?.success) {
+          const filter = useTodoSearchStore.getState().getFilter();
 
-        await refetch({
-          filter,
-        });
+          await refetch({
+            filter,
+          });
 
-        toast.success("할 일이 성공적으로 추가되었습니다.");
+          toast.success("할 일이 성공적으로 추가되었습니다.");
+        } else {
+          const error = ctx.data?.error;
+          if (error) {
+            toast.error(error.message);
+          }
+        }
       } catch (e) {
         console.error(e);
         toast.error("할 일 목록을 다시 불러오는 중 오류가 발생했습니다.");
