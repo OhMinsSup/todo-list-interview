@@ -40,7 +40,9 @@ export const getTodoListApi = async ({ query }: GetTodoListParams = {}) => {
       },
       {
         init: {
-          cache: "no-store",
+          next: {
+            tags: ["todos"],
+          },
         },
       },
     );
