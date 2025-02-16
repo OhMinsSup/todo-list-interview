@@ -52,5 +52,7 @@ describe("TodoTab", () => {
     expect(todoTab).toHaveTextContent("All");
     expect(todoTab).toHaveClass("button--primary button--filled");
     expect(onNavigate).toHaveBeenCalled();
+    expect(onNavigate).toHaveBeenCalledWith("All");
+    expect(onNavigate).toHaveBeenCalledTimes(1);
   });
 });
