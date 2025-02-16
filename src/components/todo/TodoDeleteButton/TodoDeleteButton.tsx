@@ -7,11 +7,11 @@ import { Button } from "~/components/ui/Button";
 import { deleteTodoAction } from "~/features/todos/actions/deleteTodoAction";
 import { useTodoListRrefetchTodoIdQuery } from "~/features/todos/hooks/useTodoListFetchQuery";
 
-interface Props {
+interface TodoDeleteButtonProps {
   todoId: string;
 }
 
-const TodoDeleteButton = ({ todoId }: Props) => {
+const TodoDeleteButton = ({ todoId }: TodoDeleteButtonProps) => {
   const refetchTodoId = useTodoListRrefetchTodoIdQuery();
 
   const { execute, isPending } = useAction(deleteTodoAction, {

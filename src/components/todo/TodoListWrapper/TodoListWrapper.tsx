@@ -1,11 +1,11 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
 
-interface Props {
+interface TodoListWrapperProps {
   children: React.ReactNode;
 }
 
-const TodoListWrapper = React.forwardRef<HTMLDivElement, Props>(
+const TodoListWrapper = React.forwardRef<HTMLDivElement, TodoListWrapperProps>(
   ({ children }, ref) => {
     const { sizes } = useTheme();
     return (

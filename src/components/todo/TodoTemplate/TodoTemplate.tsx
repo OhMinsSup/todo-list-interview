@@ -3,11 +3,11 @@
 import React from "react";
 import { useTheme } from "@emotion/react";
 
-interface Props {
+interface TodoTemplateProps {
   children: React.ReactNode;
 }
 
-const TodoTemplate = ({ children }: Props) => {
+const TodoTemplate = ({ children }: TodoTemplateProps) => {
   const { sizes, spacing } = useTheme();
   return (
     <div

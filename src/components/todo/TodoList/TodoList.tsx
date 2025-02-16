@@ -17,11 +17,11 @@ import { useTodoListFetchQuery } from "~/features/todos/hooks/useTodoListFetchQu
 import { useTodoListQuery } from "~/features/todos/hooks/useTodoListQuery";
 import { TodoListSkeleton } from "../TodoListSkeleton";
 
-interface Props {
+interface TodoListProps {
   filter?: TodoTabValue;
 }
 
-const TodoList = ({ filter = "All" }: Props) => {
+const TodoList = ({ filter = "All" }: TodoListProps) => {
   const todoList = useTodoListQuery();
 
   const { query } = useTodoSearchParamsQuery();

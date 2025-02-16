@@ -7,11 +7,11 @@ import type { TodoTabProps } from "~/components/todo/TodoTab";
 import { TodoTab } from "~/components/todo/TodoTab";
 import { TodoTab as TodoTabConstant } from "~/features/search/store/useTodoSearchStore";
 
-interface Props extends Omit<TodoTabProps, "value" | "text"> {
+export interface TodoTabsProps extends Omit<TodoTabProps, "value" | "text"> {
   isPending: boolean;
 }
 
-const TodoTabs = ({ currentValue, onNavigate, isPending }: Props) => {
+const TodoTabs = ({ currentValue, onNavigate, isPending }: TodoTabsProps) => {
   const { sizes, spacing } = useTheme();
   return (
     <div

@@ -5,11 +5,11 @@ import { useTheme } from "@emotion/react";
 
 import { Flex } from "~/components/ui/Flex";
 
-interface Props {
+interface TodoBoxProps {
   children: React.ReactNode;
 }
 
-const TodoBox = ({ children }: Props) => {
+const TodoBox = ({ children }: TodoBoxProps) => {
   const { spacing, rounded, palette, shadows } = useTheme();
   return (
     <Flex
