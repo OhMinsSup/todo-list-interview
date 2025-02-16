@@ -1,5 +1,6 @@
 import React from "react";
 import localFont from "next/font/local";
+import { ToastContainer } from "react-toastify";
 
 import GlobalCss from "~/styles/GlobalCss";
 import LayoutEmotion from "./layout.emotion";
@@ -28,6 +29,11 @@ export default function RootLayout({ children }: Props) {
         <LayoutEmotion>
           <LayoutRecoil>{children}</LayoutRecoil>
           <GlobalCss />
+          <ToastContainer
+            position="bottom-right"
+            autoClose={1000}
+            closeOnClick
+          />
         </LayoutEmotion>
       </body>
     </html>

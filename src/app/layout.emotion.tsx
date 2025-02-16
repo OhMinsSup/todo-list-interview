@@ -2,7 +2,6 @@
 
 import React from "react";
 import { ThemeProvider } from "@emotion/react";
-import { ToastContainer } from "react-toastify";
 
 import NextAppDirEmotionCacheProvider from "~/styles/NextAppDirEmotionCacheProvider";
 import { theme } from "~/styles/theme";
@@ -18,10 +17,7 @@ const LayoutEmotion = ({ children }: Props) => {
         key: "css",
       }}
     >
-      <ThemeProvider theme={theme}>
-        {children}
-        <ToastContainer position="bottom-right" autoClose={1000} closeOnClick />
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </NextAppDirEmotionCacheProvider>
   );
 };

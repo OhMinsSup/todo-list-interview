@@ -15,7 +15,9 @@ export type ComponentType =
   | "count"
   | "title"
   | "form-input-error"
-  | "todo-empty";
+  | "todo-empty"
+  | "global-error-text"
+  | "global-error-description-text";
 
 interface Style {
   element: ElementType;
@@ -61,6 +63,25 @@ export const getTodoEmptyStyle = (theme: Theme): Style => {
     element: "p",
     css: {
       color: theme.palette.textSecondary,
+    },
+  };
+};
+
+export const getGlobalErrorTextStyle = (theme: Theme): Style => {
+  return {
+    element: "span",
+    css: {
+      fontWeight: theme.fontWeights.semibold,
+    },
+  };
+};
+
+export const getGlobalErrorDescriptionTextStyle = (theme: Theme): Style => {
+  return {
+    element: "p",
+    css: {
+      textAlign: "center",
+      fontSize: theme.palette.textTertiary,
     },
   };
 };

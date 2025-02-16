@@ -7,6 +7,8 @@ import {
   getCountStyle,
   getEmptyStyle,
   getFormInputErrorStyle,
+  getGlobalErrorDescriptionTextStyle,
+  getGlobalErrorTextStyle,
   getTitleStyle,
   getTodoEmptyStyle,
 } from "./styles";
@@ -40,6 +42,12 @@ const Typography = ({
       }
       case "todo-empty": {
         return getTodoEmptyStyle(theme);
+      }
+      case "global-error-text": {
+        return getGlobalErrorTextStyle(theme);
+      }
+      case "global-error-description-text": {
+        return getGlobalErrorDescriptionTextStyle(theme);
       }
       default: {
         return getEmptyStyle();
