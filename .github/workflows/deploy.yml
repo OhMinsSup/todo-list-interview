@@ -50,7 +50,7 @@ jobs:
         run: yarn deploy
         env:
           D1_DATABASE_NAME: ${{ secrets.D1_DATABASE_NAME }}
-          DATABASE_ID: ${{ secrets.D1_DATABASE_ID }}
+          DATABASE_ID: ${{ secrets.DATABASE_ID }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
