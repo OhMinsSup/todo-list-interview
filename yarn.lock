@@ -3009,10 +3009,10 @@
     promise.series "^0.2.0"
     urlpattern-polyfill "^10.0.0"
 
-"@opennextjs/cloudflare@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@opennextjs/cloudflare/-/cloudflare-0.5.0.tgz#4faaaa13a963146572e8945cf50ffcbdd797178e"
-  integrity sha512-bOy9n26d3+R+oaKn6ACXIojByAhorc0uFiIQSgVQpa/L/KXRdIwWsyh4+68J1hfFWAC/VehEfPcKVg5hLLul4g==
+"@opennextjs/cloudflare@^0.5.1":
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/@opennextjs/cloudflare/-/cloudflare-0.5.1.tgz#2ef93f1ec5df9810bc833daa53c636a0d4198607"
+  integrity sha512-qDBuMyZthj8TzUwm5LJscIFKe57JsfQS2Cme9ZjF2KHgDFtcJghNBJxPqPQFSCMUdapDKBpuuL+eN7tM5lLVow==
   dependencies:
     "@ast-grep/napi" "^0.34.1"
     "@dotenvx/dotenvx" "1.31.0"
