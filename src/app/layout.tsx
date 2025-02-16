@@ -1,7 +1,9 @@
+import type { Metadata } from "next";
 import React from "react";
 import localFont from "next/font/local";
 import { ToastContainer } from "react-toastify";
 
+import { getBaseUrl } from "~/libs/utils";
 import GlobalCss from "~/styles/GlobalCss";
 import LayoutEmotion from "./layout.emotion";
 import LayoutRecoil from "./layout.recoil";
@@ -13,9 +15,28 @@ const pretendard = localFont({
   variable: "--font-pretendard",
 });
 
-export const metadata = {
-  title: "myfair front pre-course",
-  description: "todolist",
+export const metadata: Metadata = {
+  metadataBase: getBaseUrl(),
+  title: "TodoList",
+  description:
+    "This is a Next.js-based TodoList distributed through Cloudflare.",
+  openGraph: {
+    title: "TodoList",
+    description:
+      "This is a Next.js-based TodoList distributed through Cloudflare.",
+    url: getBaseUrl(),
+    siteName: "TodoList",
+    type: "website",
+  },
+  robots: {
+    follow: true,
+    index: true,
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@Lalossol",
+    creator: "@Lalossol",
+  },
 };
 
 interface Props {
