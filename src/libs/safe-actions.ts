@@ -4,29 +4,28 @@ import {
 } from "next-safe-action";
 import { z } from "zod";
 
+import "drizzle-orm/d1";
+
 import { getCloudFlareDB } from "~/db/drizzle";
+import logger from "~/libs/logger";
 
 export const action = createSafeActionClient({
   defineMetadataSchema: () =>
     z.object({
       actionName: z.string(),
     }),
-  handleServerError(e) {
-    console.error(
-      `Next Server Action Error "${e.name || "UnknownError"}" with message "${
-        e.message
-      }"`,
-      {
-        name: e.name,
-        message: e.message,
-        stack: e.stack,
-      },
-    );
+  handleServerError(e, utils) {
+    const { clientInput, metadata } = utils;
+
+    logger.error("server-action", e.message, e, {
+      actionName: metadata.actionName,
+      clientInput,
+    });
 
     // Every other error that occurs will be masked with the default message.
-    return DEFAULT_SERVER_ERROR_MESSAGE;
+    return e.message || DEFAULT_SERVER_ERROR_MESSAGE;
   },
-}).use(async ({ next }) => {
+}).use(({ next }) => {
   const db = getCloudFlareDB();
   return next({ ctx: { db } });
 });
