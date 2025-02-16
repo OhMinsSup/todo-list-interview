@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
 
 import { todoTable, UpdateTodoSchema } from "~/db/schema";
@@ -18,5 +19,6 @@ export const updateTodoAction = action
       .returning();
 
     const todo = data.find((t) => t.id === id);
+    revalidatePath("/");
     return { success: true, data: todo, error: undefined };
   });

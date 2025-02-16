@@ -1,5 +1,6 @@
 "use server";
 
+import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
 
 import { IdSchema, todoTable } from "~/db/schema";
@@ -13,5 +14,6 @@ export const deleteTodoAction = action
       .delete(todoTable)
       .where(eq(todoTable.id, parsedInput.id))
       .returning();
+    revalidatePath("/");
     return { success: true, data: undefined, error: undefined };
   });
