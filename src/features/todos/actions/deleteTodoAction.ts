@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
 
 import { IdSchema, todoTable } from "~/db/schema";
@@ -14,6 +14,6 @@ export const deleteTodoAction = action
       .delete(todoTable)
       .where(eq(todoTable.id, parsedInput.id))
       .returning();
-    revalidateTag("todos");
+    revalidatePath("/", "page");
     return { success: true, data: undefined, error: undefined };
   });

@@ -18,6 +18,7 @@ const TodoDeleteButton = ({ todoId }: Props) => {
     onSuccess: async (ctx) => {
       try {
         await refetchTodoId(ctx.input.id);
+
         toast.success("할 일이 성공적으로 삭제되었습니다.");
       } catch (e) {
         console.error(e);

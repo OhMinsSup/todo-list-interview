@@ -1,6 +1,6 @@
 "use server";
 
-import { revalidateTag } from "next/cache";
+import { revalidatePath } from "next/cache";
 import { eq } from "drizzle-orm";
 
 import { todoTable, UpdateTodoSchema } from "~/db/schema";
@@ -19,6 +19,6 @@ export const updateTodoAction = action
       .returning();
 
     const todo = data.find((t) => t.id === id);
-    revalidateTag("todos");
+    revalidatePath("/", "page");
     return { success: true, data: todo, error: undefined };
   });
