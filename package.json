@@ -52,7 +52,7 @@
     "@ianvs/prettier-plugin-sort-imports": "^4.3.1",
     "@next/eslint-plugin-next": "^15.1.6",
     "@opennextjs/aws": "^3.4.2",
-    "@opennextjs/cloudflare": "^0.5.0",
+    "@opennextjs/cloudflare": "^0.5.1",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/jest-dom": "^6.5.0",
     "@testing-library/react": "^16.0.1",
