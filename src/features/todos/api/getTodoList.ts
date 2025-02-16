@@ -34,9 +34,16 @@ interface GetTodoListParams {
 
 export const getTodoListApi = async ({ query }: GetTodoListParams = {}) => {
   try {
-    const response = await client.api.todos.$get({
-      query: paredTodoQuery(query),
-    });
+    const response = await client.api.todos.$get(
+      {
+        query: paredTodoQuery(query),
+      },
+      {
+        init: {
+          cache: "no-store",
+        },
+      },
+    );
     return await response.json();
   } catch (error) {
     console.error(error);
