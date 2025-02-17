@@ -2,11 +2,11 @@ import React from "react";
 import { useTheme } from "@emotion/react";
 
 import type { Todo } from "~/db/schema";
+import { TodoCheckbox } from "~/components/todo/TodoCheckbox";
 import { TodoDeleteButton } from "~/components/todo/TodoDeleteButton";
 import { Flex } from "~/components/ui/Flex";
-import { TodoCheckbox } from "../TodoCheckbox";
 
-interface TodoItemProps {
+export interface TodoItemProps {
   item: Todo;
 }
 
