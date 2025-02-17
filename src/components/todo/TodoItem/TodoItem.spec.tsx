@@ -102,4 +102,18 @@ describe("v", () => {
     expect(execute).toHaveBeenCalledTimes(1);
     expect(execute).toHaveBeenCalledWith({ id: "1" });
   });
+
+  it("TodoItem 컴포넌트 렌더링 (완료된 Todo)", () => {
+    const { getByText } = setup({
+      item: {
+        id: "1",
+        completed: true,
+        text: "Todo",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    });
+
+    expect(getByText("Todo")).toHaveStyle("color: rgba(0, 0, 0, 0.45)");
+  });
 });

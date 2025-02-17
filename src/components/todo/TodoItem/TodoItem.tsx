@@ -11,7 +11,7 @@ export interface TodoItemProps {
 }
 
 const TodoItem = ({ item }: TodoItemProps) => {
-  const { spacing } = useTheme();
+  const { spacing, palette } = useTheme();
 
   return (
     <Flex
@@ -23,7 +23,15 @@ const TodoItem = ({ item }: TodoItemProps) => {
       }}
     >
       <TodoCheckbox todoId={item.id} completed={item.completed} />
-      <span>{item.text}</span>
+      <span
+        css={{
+          ...(item.completed && {
+            color: palette.textTertiary,
+          }),
+        }}
+      >
+        {item.text}
+      </span>
       <TodoDeleteButton todoId={item.id} />
     </Flex>
   );
