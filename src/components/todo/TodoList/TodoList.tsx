@@ -6,6 +6,7 @@ import { useVirtualizer } from "@tanstack/react-virtual";
 import type { TodoTabValue } from "~/features/search/store/useTodoSearchStore";
 import { TodoItem } from "~/components/todo/TodoItem";
 import { TodoItemSkeleton } from "~/components/todo/TodoItemSkeleton";
+import { TodoListSkeleton } from "~/components/todo/TodoListSkeleton";
 import { TodoListWrapper } from "~/components/todo/TodoListWrapper";
 import { Flex } from "~/components/ui/Flex";
 import { Typography } from "~/components/ui/Typography";
@@ -15,7 +16,6 @@ import { TodoTab } from "~/features/search/store/useTodoSearchStore";
 import { useTodoHasNextPageQuery } from "~/features/todos/hooks/useTodoHasNextPageQuery";
 import { useTodoListFetchQuery } from "~/features/todos/hooks/useTodoListFetchQuery";
 import { useTodoListQuery } from "~/features/todos/hooks/useTodoListQuery";
-import { TodoListSkeleton } from "../TodoListSkeleton";
 
 interface TodoListProps {
   filter?: TodoTabValue;
